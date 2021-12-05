@@ -4,7 +4,7 @@
 //#include "game.h"
 #include "menu.h"
 //#include "gameover.h"
-//#include "credits.h"
+#include "credits.h"
 //#include "pause.h"
 //#include "spaceship.h"
 //#include "meteors.h"
@@ -13,7 +13,7 @@ using namespace app;
 //using namespace game;
 using namespace menu;
 //using namespace gameover;
-//using namespace credits;
+using namespace credits;
 //using namespace pause;
 //using namespace spaceship;
 //using namespace meteors;
@@ -32,9 +32,9 @@ namespace app
 		SetExitKey(0);
 		InitWindow(screenWidth, screenHeight, "ASTEROIDS");
 		InitMenu();
+		InitCredits();
 		/*InitAudioDevice();
 		InitValues();
-		InitCredits();
 		InitGameover();
 		InitPause();
 		menuSong = LoadMusicStream("../res/menusong2.ogg");
@@ -61,7 +61,7 @@ namespace app
 			UpdateMenu();
 			break;
 		case Credits:
-			//UpdateCredits();
+			UpdateCredits();
 			break;
 		case Gameplay:
 			//UpdateFrame();
@@ -86,7 +86,7 @@ namespace app
 			DrawMenu();
 			break;
 		case Credits:
-			//DrawCredits();
+			DrawCredits();
 			break;
 		case Gameplay:
 			//Draw();
