@@ -4,11 +4,11 @@
 
 //#include "pause.h"
 #include "app.h"
-//#include "game.h"
+#include "game.h"
 
 using namespace app;
 //using namespace pause;
-//using namespace game;
+using namespace game;
 
 namespace app
 {

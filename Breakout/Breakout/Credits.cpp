@@ -2,12 +2,10 @@
 
 #include <raylib.h>
 
-//#include "game.h"
 #include "app.h"
 #include "menu.h"
 
 using namespace app;
-//using namespace game;
 using namespace menu;
 
 namespace app

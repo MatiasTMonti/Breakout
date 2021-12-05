@@ -1,7 +1,7 @@
 #include "app.h"
 #include "raylib.h"
 
-//#include "game.h"
+#include "game.h"
 #include "menu.h"
 //#include "gameover.h"
 #include "credits.h"
@@ -10,7 +10,7 @@
 //#include "meteors.h"
 
 using namespace app;
-//using namespace game;
+using namespace game;
 using namespace menu;
 //using namespace gameover;
 using namespace credits;
@@ -33,8 +33,8 @@ namespace app
 		InitWindow(screenWidth, screenHeight, "ASTEROIDS");
 		InitMenu();
 		InitCredits();
-		/*InitAudioDevice();
 		InitValues();
+		/*InitAudioDevice();
 		InitGameover();
 		InitPause();
 		menuSong = LoadMusicStream("../res/menusong2.ogg");
@@ -64,7 +64,7 @@ namespace app
 			UpdateCredits();
 			break;
 		case Gameplay:
-			//UpdateFrame();
+			UpdateFrame();
 			break;
 		case GameOver:
 			//UpdateGameOver();
@@ -89,7 +89,7 @@ namespace app
 			DrawCredits();
 			break;
 		case Gameplay:
-			//Draw();
+			Draw();
 			break;
 		case GameOver:
 			//DrawGameOver();
