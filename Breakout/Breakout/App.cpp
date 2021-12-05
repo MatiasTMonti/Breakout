@@ -5,18 +5,14 @@
 #include "menu.h"
 //#include "gameover.h"
 #include "credits.h"
-//#include "pause.h"
-//#include "spaceship.h"
-//#include "meteors.h"
+#include "pause.h"
 
 using namespace app;
 using namespace game;
 using namespace menu;
 //using namespace gameover;
 using namespace credits;
-//using namespace pause;
-//using namespace spaceship;
-//using namespace meteors;
+using namespace pause;
 
 namespace app
 {
@@ -30,13 +26,13 @@ namespace app
 	static void InitGame()
 	{
 		SetExitKey(0);
-		InitWindow(screenWidth, screenHeight, "ASTEROIDS");
+		InitWindow(screenWidth, screenHeight, "BREAKOUT");
 		InitMenu();
 		InitCredits();
 		InitValues();
+		InitPause();
 		/*InitAudioDevice();
 		InitGameover();
-		InitPause();
 		menuSong = LoadMusicStream("../res/menusong2.ogg");
 		PlayMusicStream(menuSong);*/
 
@@ -70,7 +66,7 @@ namespace app
 			//UpdateGameOver();
 			break;
 		case Pause:
-			//UpdatePause();
+			UpdatePause();
 			break;
 		default:
 			break;
@@ -95,7 +91,7 @@ namespace app
 			//DrawGameOver();
 			break;
 		case Pause:
-			//DrawPause();
+			DrawPause();
 			break;
 		default:
 			break;
