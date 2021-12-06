@@ -5,10 +5,12 @@
 #include "app.h"
 #include "Player.h"
 #include "Brick.h"
+#include "Ball.h"
 
 using namespace app;
 using namespace player;
 using namespace brick;
+using namespace ball;
 
 namespace app
 {
@@ -57,6 +59,7 @@ namespace app
 			//INIT GAME
 			InitPlayer();
 			InitBrick();
+			InitBall();
 		}
 
 
@@ -83,6 +86,7 @@ namespace app
 			//UPDATE GAME
 			UpdatePlayer();
 			UpdateBrick();
+			UpdateBall();
 		}
 
 		void UpdateFrame()
@@ -99,6 +103,7 @@ namespace app
 			//DRAW INGAME
 			DrawPlayer();
 			DrawBrick();
+			DrawBall();
 
 			DrawRectangleRec(btnPause1, colorRect);
 			DrawRectangleRec(btnPause2, colorRect);

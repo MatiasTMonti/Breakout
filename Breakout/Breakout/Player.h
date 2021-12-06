@@ -11,6 +11,8 @@ namespace app
 			int life;
 		};
 
+		extern Player player;
+
 		void InitPlayer();
 		void UpdatePlayer();
 		void DrawPlayer();
