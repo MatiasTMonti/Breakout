@@ -44,6 +44,17 @@ namespace app
 			{
 				ball.position = { app::player::player.position.x, (float)GetScreenHeight() * 7 / 8 - 30 };
 			}
+
+			// Collision logic: ball vs walls
+			if (((ball.position.x + ball.radius) >= GetScreenWidth()) || ((ball.position.x - ball.radius) <= 0)) ball.speed.x *= -1;
+			if ((ball.position.y - ball.radius) <= 0) ball.speed.y *= -1;
+			if ((ball.position.y + ball.radius) >= GetScreenHeight())
+			{
+				ball.speed = { 0, 0 };
+				ball.active = false;
+
+				app::player::player.life--;
+			}
 		}
 
 		void DrawBall()
