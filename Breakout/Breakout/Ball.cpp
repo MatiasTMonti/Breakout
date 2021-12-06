@@ -55,6 +55,16 @@ namespace app
 
 				app::player::player.life--;
 			}
+
+			// Collision logic: ball vs player
+			if (CheckCollisionCircleRec(ball.position, ball.radius, { app::player::player.position.x - app::player::player.size.x / 2, app::player::player.position.y - app::player::player.size.y / 2, app::player::player.size.x, app::player::player.size.y }))
+			{
+				if (ball.speed.y > 0)
+				{
+					ball.speed.y *= -1;
+					ball.speed.x = (ball.position.x - app::player::player.position.x) / (app::player::player.size.x / 2) * 5;
+				}
+			}
 		}
 
 		void DrawBall()
