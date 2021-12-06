@@ -1,5 +1,12 @@
 #include "Brick.h"
 
+#include "Ball.h"
+
+#include <math.h>
+
+using namespace app;
+using namespace ball;
+
 namespace app
 {
 	namespace brick
@@ -29,6 +36,48 @@ namespace app
 
 		void UpdateBrick()
 		{
+			// Collision logic: ball vs bricks
+			for (int i = 0; i < linesBricks; i++)
+			{
+				for (int j = 0; j < brickPerLines; j++)
+				{
+					if (brick[i][j].active)
+					{
+						// Hit below
+						if (((app::ball::ball.position.y - app::ball::ball.radius) <= (brick[i][j].position.y + brickSize.y / 2)) &&
+							((app::ball::ball.position.y - app::ball::ball.radius) > (brick[i][j].position.y + brickSize.y / 2 + app::ball::ball.speed.y)) &&
+							((fabs(app::ball::ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + app::ball::ball.radius * 2 / 3)) && (app::ball::ball.speed.y < 0))
+						{
+							brick[i][j].active = false;
+							app::ball::ball.speed.y = app::ball::ball.speed.y -200 * GetFrameTime();
+						}
+						// Hit above
+						else if (((app::ball::ball.position.y + app::ball::ball.radius) >= (brick[i][j].position.y - brickSize.y / 2)) &&
+							((app::ball::ball.position.y + app::ball::ball.radius) < (brick[i][j].position.y - brickSize.y / 2 + app::ball::ball.speed.y)) &&
+							((fabs(app::ball::ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + app::ball::ball.radius * 2 / 3)) && (app::ball::ball.speed.y > 0))
+						{
+							brick[i][j].active = false;
+							app::ball::ball.speed.y = app::ball::ball.speed.y -200 * GetFrameTime();
+						}
+						// Hit left
+						else if (((app::ball::ball.position.x + app::ball::ball.radius) >= (brick[i][j].position.x - brickSize.x / 2)) &&
+							((app::ball::ball.position.x + app::ball::ball.radius) < (brick[i][j].position.x - brickSize.x / 2 + app::ball::ball.speed.x)) &&
+							((fabs(app::ball::ball.position.y - brick[i][j].position.y)) < (brickSize.y / 2 + app::ball::ball.radius * 2 / 3)) && (app::ball::ball.speed.x > 0))
+						{
+							brick[i][j].active = false;
+							app::ball::ball.speed.x = app::ball::ball.speed.y -200 * GetFrameTime();
+						}
+						// Hit right
+						else if (((app::ball::ball.position.x - app::ball::ball.radius) <= (brick[i][j].position.x + brickSize.x / 2)) &&
+							((app::ball::ball.position.x - app::ball::ball.radius) > (brick[i][j].position.x + brickSize.x / 2 + app::ball::ball.speed.x)) &&
+							((fabs(app::ball::ball.position.y - brick[i][j].position.y)) < (brickSize.y / 2 + app::ball::ball.radius * 2 / 3)) && (app::ball::ball.speed.x < 0))
+						{
+							brick[i][j].active = false;
+							app::ball::ball.speed.x = app::ball::ball.speed.y -200 * GetFrameTime();
+						}
+					}
+				}
+			}
 
 		}
 

@@ -12,6 +12,8 @@ namespace app
 			bool active;
 		};
 
+		extern Ball ball;
+
 		void InitBall();
 		void UpdateBall();
 		void DrawBall();

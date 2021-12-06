@@ -11,7 +11,7 @@ namespace app
 {
 	namespace ball
 	{
-		static Ball ball = { 0 };
+		Ball ball = { 0 };
 
 		void InitBall()
 		{
