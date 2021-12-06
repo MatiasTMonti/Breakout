@@ -3,9 +3,12 @@
 #include "raylib.h"
 
 #include "app.h"
+#include "Player.h"
+#include "Brick.h"
 
 using namespace app;
-
+using namespace player;
+using namespace brick;
 
 namespace app
 {
@@ -52,6 +55,8 @@ namespace app
 			//backTexture = LoadTextureFromImage(backImage);
 
 			//INIT GAME
+			InitPlayer();
+			InitBrick();
 		}
 
 
@@ -76,6 +81,8 @@ namespace app
 		static void Update()
 		{
 			//UPDATE GAME
+			UpdatePlayer();
+			UpdateBrick();
 		}
 
 		void UpdateFrame()
@@ -90,6 +97,8 @@ namespace app
 			DrawTexture(backTexture, 0, 0, WHITE);
 
 			//DRAW INGAME
+			DrawPlayer();
+			DrawBrick();
 
 			DrawRectangleRec(btnPause1, colorRect);
 			DrawRectangleRec(btnPause2, colorRect);
