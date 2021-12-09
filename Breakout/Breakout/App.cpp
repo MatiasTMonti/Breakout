@@ -3,14 +3,14 @@
 
 #include "game.h"
 #include "menu.h"
-//#include "gameover.h"
+#include "gameover.h"
 #include "credits.h"
 #include "pause.h"
 
 using namespace app;
 using namespace game;
 using namespace menu;
-//using namespace gameover;
+using namespace gameover;
 using namespace credits;
 using namespace pause;
 
@@ -31,8 +31,8 @@ namespace app
 		InitCredits();
 		InitValues();
 		InitPause();
-		/*InitAudioDevice();
 		InitGameover();
+		/*InitAudioDevice();
 		menuSong = LoadMusicStream("../res/menusong2.ogg");
 		PlayMusicStream(menuSong);*/
 
@@ -63,7 +63,7 @@ namespace app
 			UpdateFrame();
 			break;
 		case GameOver:
-			//UpdateGameOver();
+			UpdateGameOver();
 			break;
 		case Pause:
 			UpdatePause();
@@ -88,7 +88,7 @@ namespace app
 			Draw();
 			break;
 		case GameOver:
-			//DrawGameOver();
+			DrawGameOver();
 			break;
 		case Pause:
 			DrawPause();
