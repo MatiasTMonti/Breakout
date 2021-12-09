@@ -1,6 +1,6 @@
 #include "credits.h"
 
-#include <raylib.h>
+#include "raylib.h"
 
 #include "app.h"
 #include "menu.h"

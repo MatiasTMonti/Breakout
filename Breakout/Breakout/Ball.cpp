@@ -5,7 +5,6 @@
 
 using namespace app;
 using namespace game;
-using namespace player;
 
 namespace app 
 {
@@ -24,46 +23,52 @@ namespace app
 
 		void UpdateBall()
 		{
-			// Ball launching logic
-			if (!ball.active)
+			if (!gameOver)
 			{
-				if (IsKeyPressed(KEY_SPACE))
+				// Ball launching logic
+				if (!ball.active)
 				{
-					ball.active = true;
-					ball.speed = { 0, -250 };
+					if (IsKeyPressed(KEY_SPACE))
+					{
+						ball.active = true;
+						ball.speed = { 0, -250 };
+					}
 				}
-			}
 
-			// Ball movement logic
-			if (ball.active)
-			{
-				ball.position.x += ball.speed.x * GetFrameTime();
-				ball.position.y += ball.speed.y * GetFrameTime();
-			}
-			else
-			{
-				ball.position = { app::player::player.position.x, (float)GetScreenHeight() * 7 / 8 - 30 };
-			}
-
-			// Collision logic: ball vs walls
-			if (((ball.position.x + ball.radius) >= GetScreenWidth()) || ((ball.position.x - ball.radius) <= 0)) ball.speed.x *= -1;
-			if ((ball.position.y - ball.radius) <= 0) ball.speed.y *= -1;
-			if ((ball.position.y + ball.radius) >= GetScreenHeight())
-			{
-				ball.speed = { 0, 0 };
-				ball.active = false;
-
-				app::player::player.life--;
-			}
-
-			// Collision logic: ball vs player
-			if (CheckCollisionCircleRec(ball.position, ball.radius, { app::player::player.position.x - app::player::player.size.x / 2, app::player::player.position.y - app::player::player.size.y / 2, app::player::player.size.x, app::player::player.size.y }))
-			{
-				if (ball.speed.y > 0)
+				// Ball movement logic
+				if (ball.active)
 				{
-					ball.speed.y *= -1;
-					ball.speed.x = (ball.position.x - app::player::player.position.x) / (player::player.size.x / 2) * 250;
+					ball.position.x += ball.speed.x * GetFrameTime();
+					ball.position.y += ball.speed.y * GetFrameTime();
 				}
+				else
+				{
+					ball.position = { app::player::player.position.x, (float)GetScreenHeight() * 7 / 8 - 30 };
+				}
+
+				// Collision logic: ball vs walls
+				if (((ball.position.x + ball.radius) >= GetScreenWidth()) || ((ball.position.x - ball.radius) <= 0)) ball.speed.x *= -1;
+				if ((ball.position.y - ball.radius) <= 0) ball.speed.y *= -1;
+				if ((ball.position.y + ball.radius) >= GetScreenHeight())
+				{
+					ball.speed = { 0, 0 };
+					ball.active = false;
+
+					player::player.life--;
+				}
+
+				// Collision logic: ball vs player
+				if (CheckCollisionCircleRec(ball.position, ball.radius, { player::player.position.x - player::player.size.x / 2, player::player.position.y - player::player.size.y / 2, player::player.size.x, player::player.size.y }))
+				{
+					if (ball.speed.y > 0)
+					{
+						ball.speed.y *= -1;
+						ball.speed.x = (ball.position.x - player::player.position.x) / (player::player.size.x / 2) * 250;
+					}
+				}
+
+				// Game over logic
+				if (player::player.life <= 0) gameOver = true;
 			}
 		}
 

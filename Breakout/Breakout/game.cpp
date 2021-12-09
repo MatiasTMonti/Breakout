@@ -43,7 +43,7 @@ namespace app
 
 			//backImage = LoadImage("../res/gameBackground.png");
 
-			//init boton pausa
+			//init pause button
 			btnPause1.x = GetScreenWidth() * 0.96f;
 			btnPause1.y = GetScreenHeight() * 0.02f;
 			btnPause1.height = (GetScreenWidth() * 40) / 1600;

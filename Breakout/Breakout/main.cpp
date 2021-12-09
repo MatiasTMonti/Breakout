@@ -1,6 +1,6 @@
 #include "App.h"
 
-void main()
+int main()
 {
 	app::ExecuteGame();
 }

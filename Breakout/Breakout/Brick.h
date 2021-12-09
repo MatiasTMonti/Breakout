@@ -5,7 +5,8 @@ namespace app
 {
 	namespace brick
 	{
-		struct Brick {
+		struct Brick 
+		{
 			Vector2 position;
 			bool active;
 		};

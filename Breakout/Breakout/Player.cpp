@@ -1,30 +1,34 @@
 #include "Player.h"
 #include "App.h"
+#include "game.h"
 
 using namespace app;
+using namespace game;
 
 namespace app
 {
 	namespace player
 	{
 		Player player = { 0 };
-		int lifes = 3;
 
 		void InitPlayer()
 		{
 			// Initialize player
 			player.position = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() * 7 / 8 };
 			player.size = { (float)GetScreenWidth() / 10, 20 };
-			player.life = lifes;
+			player.life = 3;
 		}
 
 		void UpdatePlayer()
 		{
-			// Player movement logic
-			if (IsKeyDown(KEY_LEFT)) player.position.x -= 350 * GetFrameTime();
-			if ((player.position.x - player.size.x / 2) <= 0) player.position.x = player.size.x / 2;
-			if (IsKeyDown(KEY_RIGHT)) player.position.x += 350 * GetFrameTime();
-			if ((player.position.x + player.size.x / 2) >= GetScreenWidth()) player.position.x = GetScreenWidth() - player.size.x / 2;
+			if (!gameOver)
+			{
+				// Player movement logic
+				if (IsKeyDown(KEY_LEFT)) player.position.x -= 350 * GetFrameTime();
+				if ((player.position.x - player.size.x / 2) <= 0) player.position.x = player.size.x / 2;
+				if (IsKeyDown(KEY_RIGHT)) player.position.x += 350 * GetFrameTime();
+				if ((player.position.x + player.size.x / 2) >= GetScreenWidth()) player.position.x = GetScreenWidth() - player.size.x / 2;
+			}
 		}
 
 		void DrawPlayer()

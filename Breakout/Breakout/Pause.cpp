@@ -1,6 +1,6 @@
 #include "pause.h"
 
-#include <raylib.h>
+#include "raylib.h"
 
 #include "game.h"
 #include "menu.h"
