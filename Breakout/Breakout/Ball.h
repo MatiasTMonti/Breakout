@@ -5,7 +5,8 @@ namespace app
 {
 	namespace ball
 	{
-		struct Ball {
+		struct Ball 
+		{
 			Vector2 position;
 			Vector2 speed;
 			int radius;

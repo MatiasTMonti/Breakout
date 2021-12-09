@@ -62,7 +62,7 @@ namespace app
 				if (ball.speed.y > 0)
 				{
 					ball.speed.y *= -1;
-					ball.speed.x = (ball.position.x - app::player::player.position.x) / (app::player::player.size.x / 2) * 5;
+					ball.speed.x = (ball.position.x - app::player::player.position.x) / (player::player.size.x / 2) * 250;
 				}
 			}
 		}
@@ -71,7 +71,6 @@ namespace app
 		{
 			// Draw ball
 			DrawCircleV(ball.position, ball.radius, MAROON);
-
 		}
 
 		void UnloadBall()
