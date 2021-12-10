@@ -103,11 +103,14 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>raylibdll.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>MKDIR "$(TargetDir)res\"
+XCOPY "$(SolutionDir)res\" "$(TargetDir)res\" /e /h /y /s
+XCOPY "$(SolutionDir)lib\lib\raylib.dll" "$(TargetDir)" /e /h /y /s
+MKDIR "$(ProjectDir)res\"
+XCOPY "$(SolutionDir)res\" "$(ProjectDir)res\" /e /h /y /s</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,13 +130,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>raylibdll.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PreBuildEvent>
       <Command>MKDIR "$(TargetDir)res\"
 XCOPY "$(SolutionDir)res\" "$(TargetDir)res\" /e /h /y /s
-XCOPY "$(SolutionDir)lib\lib" "$(TargetDir)" /e /h /y /s
+XCOPY "$(SolutionDir)lib\lib\raylib.dll" "$(TargetDir)" /e /h /y /s
 MKDIR "$(ProjectDir)res\"
 XCOPY "$(SolutionDir)res\" "$(ProjectDir)res\" /e /h /y /s</Command>
     </PreBuildEvent>
