@@ -8,7 +8,7 @@
 #include "ball.h"
 
 using namespace app;
-using namespace player;
+using namespace players;
 using namespace brick;
 using namespace balls;
 

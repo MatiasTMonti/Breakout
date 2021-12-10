@@ -3,7 +3,7 @@
 
 namespace app
 {
-	namespace player
+	namespace players
 	{
 		struct Player 
 		{

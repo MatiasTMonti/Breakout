@@ -7,7 +7,7 @@ using namespace game;
 
 namespace app
 {
-	namespace player
+	namespace players
 	{
 		Player player = { 0 };
 

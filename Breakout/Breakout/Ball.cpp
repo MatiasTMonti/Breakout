@@ -6,6 +6,7 @@
 
 using namespace app;
 using namespace game;
+using namespace players;
 
 namespace app
 {
@@ -50,7 +51,7 @@ namespace app
 				}
 				else
 				{
-					ball.position = { app::player::player.position.x, static_cast<float>(GetScreenHeight()) * 7 / 8 - 30 };
+					ball.position = { player.position.x, static_cast<float>(GetScreenHeight()) * 7 / 8 - 30 };
 				}
 
 				// Collision logic: ball vs walls
@@ -61,16 +62,16 @@ namespace app
 					ball.speed = { 0, 0 };
 					ball.active = false;
 
-					player::player.life--;
+					player.life--;
 				}
 
 				// Collision logic: ball vs player
-				if (CheckCollisionCircleRec(ball.position, ball.radius, { player::player.position.x - player::player.size.x / 2, player::player.position.y - player::player.size.y / 2, player::player.size.x, player::player.size.y }))
+				if (CheckCollisionCircleRec(ball.position, ball.radius, { player.position.x - player.size.x / 2, player.position.y - player.size.y / 2, player.size.x, player.size.y }))
 				{
 					if (ball.speed.y > 0)
 					{
 						ball.speed.y *= -1;
-						ball.speed.x = (ball.position.x - player::player.position.x) / (player::player.size.x / 2) * 5;
+						ball.speed.x = (ball.position.x - player.position.x) / (player.size.x / 2) * 5;
 					}
 
 					if (!pauseSoundBall)
@@ -84,9 +85,10 @@ namespace app
 				}
 
 				// Game over logic
-				if (player::player.life <= 0)
+				if (player.life <= 0)
 				{
 					gameOver = true;
+					currentScreen = GameOver;
 				}
 			}
 		}
