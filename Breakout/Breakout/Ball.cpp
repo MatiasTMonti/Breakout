@@ -20,7 +20,7 @@ namespace app
 
 		void InitBall()
 		{
-			ballSound = LoadSound("../res/impactsfx.ogg");
+			ballSound = LoadSound("res/impactsfx.ogg");
 
 			// Initialize ball
 			ball.position = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) * 7 / 8 - 30 };

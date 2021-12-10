@@ -36,7 +36,7 @@ namespace app
 		InitValues();
 		InitPause();
 		InitGameover();
-		menuSong = LoadMusicStream("../res/menusong.ogg");
+		menuSong = LoadMusicStream("res/menusong.ogg");
 		PlayMusicStream(menuSong);
 	}
 
