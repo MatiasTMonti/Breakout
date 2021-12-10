@@ -94,7 +94,6 @@ namespace app
 					currentScreen = Menu;
 					InitMenu();
 					ResetValues();
-					UnloadGameplay();
 				}
 			}
 			else colorRect2.a = 255;

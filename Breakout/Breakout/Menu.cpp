@@ -2,12 +2,12 @@
 
 #include "raylib.h"
 
-//#include "pause.h"
+#include "pause.h"
 #include "app.h"
 #include "game.h"
 
 using namespace app;
-//using namespace pause;
+using namespace pause;
 using namespace game;
 
 namespace app
@@ -110,7 +110,7 @@ namespace app
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				{
-					//mute = !mute;
+					mute = !mute;
 				}
 			}
 			else colorRect1.a = 255;
@@ -121,7 +121,6 @@ namespace app
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				{
-					UnloadMenu();
 					currentScreen = Credits;
 				}
 			}
@@ -144,8 +143,7 @@ namespace app
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				{
-					UnloadMenu();
-					//InitValues();
+					InitValues();
 					currentScreen = Gameplay;
 				}
 			}
@@ -165,12 +163,6 @@ namespace app
 			DrawText(text3, text3PositionX, text3PositionY, sizeText2, BLACK);
 			DrawText(text4, text4PositionX, text4PositionY, sizeText2, BLACK);
 			DrawText(text5, text5PositionX, text5PositionY, sizeText2, WHITE);
-		}
-
-		void UnloadMenu()
-		{
-			//UnloadTexture(menuImageTexture);
-			//UnloadImage(menuImage);
 		}
 	}
 }

@@ -6,6 +6,7 @@
 #include "gameover.h"
 #include "credits.h"
 #include "pause.h"
+#include "Ball.h"
 
 using namespace app;
 using namespace game;
@@ -13,6 +14,7 @@ using namespace menu;
 using namespace gameover;
 using namespace credits;
 using namespace pause;
+using namespace balls;
 
 namespace app
 {
@@ -20,37 +22,35 @@ namespace app
 	static int screenHeight = 768;
 	bool exit = false;
 	Screens currentScreen = Menu;
-	//static Music menuSong;
+	static Music menuSong;
 	static bool pauseMusic = false;
 
 	static void InitGame()
 	{
 		SetExitKey(0);
 		InitWindow(screenWidth, screenHeight, "BREAKOUT");
+		InitAudioDevice();
 		InitMenu();
 		InitCredits();
 		InitValues();
 		InitPause();
 		InitGameover();
-		/*InitAudioDevice();
-		menuSong = LoadMusicStream("../res/menusong2.ogg");
-		PlayMusicStream(menuSong);*/
-
+		menuSong = LoadMusicStream("../res/menusong.ogg");
+		PlayMusicStream(menuSong);
 	}
 
 	static void UpdateGame()
 	{
-		//UpdateMusicStream(menuSong);
-		//if (mute)
-		//{
-		//	pauseMusic = !pauseMusic;
-		//	pauseSoundShoot = !pauseSoundShoot;
-		//	pauseSoundExplosion = !pauseSoundExplosion;
+		UpdateMusicStream(menuSong);
+		if (mute)
+		{
+			pauseMusic = !pauseMusic;
+			pauseSoundBall = !pauseSoundBall;
 
-		//	if (pauseMusic) StopMusicStream(menuSong);
-		//	else PlayMusicStream(menuSong);
-		//	mute = false;
-		//}
+			if (pauseMusic) StopMusicStream(menuSong);
+			else PlayMusicStream(menuSong);
+			mute = false;
+		}
 		switch (currentScreen)
 		{
 		case Menu:
@@ -101,13 +101,14 @@ namespace app
 
 	static void CloseGame()
 	{
-		//UnloadMusicStream(menuSong);
-		//CloseAudioDevice();
+		UnloadMusicStream(menuSong);
+		CloseAudioDevice();
 		CloseWindow();
 	}
 
 	void ExecuteGame()
 	{
+		SetTargetFPS(60);
 		InitGame();
 		//Main game loop
 		while (!WindowShouldClose() && !exit)

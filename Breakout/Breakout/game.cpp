@@ -10,7 +10,7 @@
 using namespace app;
 using namespace player;
 using namespace brick;
-using namespace ball;
+using namespace balls;
 
 namespace app
 {
@@ -41,8 +41,6 @@ namespace app
 			textPositionX = GetScreenWidth() * 0.01f;
 			textPositionY = GetScreenHeight() * 0.97f;
 
-			//backImage = LoadImage("../res/gameBackground.png");
-
 			//init pause button
 			btnPause1.x = GetScreenWidth() * 0.96f;
 			btnPause1.y = GetScreenHeight() * 0.02f;
@@ -53,8 +51,6 @@ namespace app
 			btnPause2.height = (GetScreenWidth() * 40) / 1600;
 			btnPause2.width = (GetScreenWidth() * 15) / 1600;
 			colorRect = GRAY;
-
-			//backTexture = LoadTextureFromImage(backImage);
 
 			//INIT GAME
 			InitPlayer();
@@ -114,13 +110,6 @@ namespace app
 		{
 			InitValues();
 			gameOver = false;
-		}
-
-		void UnloadGameplay()
-		{
-			//UNLOAD ALL TEXTURES
-			//UnloadTexture(backTexture);
-			//UnloadImage(backImage);
 		}
 	}
 }

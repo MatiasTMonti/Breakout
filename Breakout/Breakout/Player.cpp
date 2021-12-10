@@ -42,10 +42,5 @@ namespace app
 				DrawRectangle(20 + 40 * i, GetScreenHeight() - 30, 35, 10, LIGHTGRAY);
 			}
 		}
-
-		void UnloadPlayer()
-		{
-
-		}
 	}
 }

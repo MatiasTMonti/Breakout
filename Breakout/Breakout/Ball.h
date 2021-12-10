@@ -3,7 +3,7 @@
 
 namespace app
 {
-	namespace ball
+	namespace balls
 	{
 		struct Ball 
 		{
@@ -14,6 +14,7 @@ namespace app
 		};
 
 		extern Ball ball;
+		extern bool pauseSoundBall;
 
 		void InitBall();
 		void UpdateBall();

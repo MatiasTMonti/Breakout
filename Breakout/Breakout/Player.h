@@ -17,6 +17,5 @@ namespace app
 		void InitPlayer();
 		void UpdatePlayer();
 		void DrawPlayer();
-		void UnloadPlayer();
 	}
 }

@@ -8,7 +8,6 @@ namespace app
 		void UpdateFrame();
 		void Draw();
 		void ResetValues();
-		void UnloadGameplay();
 
 		extern bool victory;
 		extern bool gameOver;

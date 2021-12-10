@@ -124,7 +124,6 @@ namespace app
 					currentScreen = Menu;
 					InitMenu();
 					ResetValues();
-					UnloadGameplay();
 				}
 			}
 			else colorRect1.a = 255;
@@ -134,7 +133,7 @@ namespace app
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				{
-					//mute = !mute;
+					mute = !mute;
 				}
 			}
 			else colorRect2.a = 255;

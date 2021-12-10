@@ -7,14 +7,20 @@
 using namespace app;
 using namespace game;
 
-namespace app 
+namespace app
 {
-	namespace ball
+	namespace balls
 	{
 		Ball ball = { 0 };
 
+		bool pauseSoundBall = false;
+
+		static Sound ballSound;
+
 		void InitBall()
 		{
+			ballSound = LoadSound("../res/impactsfx.ogg");
+
 			// Initialize ball
 			ball.position = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() * 7 / 8 - 30 };
 			ball.speed = { 0, 0 };
@@ -66,13 +72,21 @@ namespace app
 						ball.speed.y *= -1;
 						ball.speed.x = (ball.position.x - player::player.position.x) / (player::player.size.x / 2) * 250;
 					}
+
+					if (!pauseSoundBall)
+					{
+						PlaySound(ballSound);
+					}
+					else
+					{
+						PauseSound(ballSound);
+					}
 				}
 
 				// Game over logic
 				if (player::player.life <= 0)
 				{
 					gameOver = true;
-					currentScreen = GameOver;
 				}
 			}
 		}
@@ -82,10 +96,9 @@ namespace app
 			// Draw ball
 			DrawCircleV(ball.position, ball.radius, MAROON);
 		}
-
 		void UnloadBall()
 		{
-
+			UnloadSound(ballSound);
 		}
 	}
 }

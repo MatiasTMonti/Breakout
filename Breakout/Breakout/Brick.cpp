@@ -8,8 +8,8 @@
 #include <math.h>
 
 using namespace app;
-using namespace ball;
 using namespace game;
+using namespace balls;
 
 namespace app
 {
@@ -20,7 +20,6 @@ namespace app
 
 		static Brick brick[linesBricks][brickPerLines] = { 0 };
 		static Vector2 brickSize = { 0 };
-		static Rectangle brickSizes;
 
 		void InitBrick()
 		{
@@ -51,36 +50,36 @@ namespace app
 						if (brick[i][j].active)
 						{
 							// Hit below
-							if (((ball::ball.position.y - ball::ball.radius) <= (brick[i][j].position.y + brickSize.y / 2)) &&
-								((ball::ball.position.y - ball::ball.radius) > (brick[i][j].position.y + brickSize.y / 2 + ball::ball.speed.y)) &&
-								((fabs(ball::ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + ball::ball.radius * 2 / 3)) && (ball::ball.speed.y < 0))
+							if (((ball.position.y - ball.radius) <= (brick[i][j].position.y + brickSize.y / 2)) &&
+								((ball.position.y - ball.radius) > (brick[i][j].position.y + brickSize.y / 2 + ball.speed.y)) &&
+								((fabs(ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + ball.radius * 2 / 3)) && (ball.speed.y < 0))
 							{
 								brick[i][j].active = false;
-								ball::ball.speed.y *= -1;
+								ball.speed.y *= -1;
 							}
 							// Hit above
-							else if (((ball::ball.position.y + ball::ball.radius) >= (brick[i][j].position.y - brickSize.y / 2)) &&
-								((ball::ball.position.y + ball::ball.radius) < (brick[i][j].position.y - brickSize.y / 2 + ball::ball.speed.y)) &&
-								((fabs(ball::ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + ball::ball.radius * 2 / 3)) && (ball::ball.speed.y > 0))
+							else if (((ball.position.y + ball.radius) >= (brick[i][j].position.y - brickSize.y / 2)) &&
+								((ball.position.y + ball.radius) < (brick[i][j].position.y - brickSize.y / 2 + ball.speed.y)) &&
+								((fabs(ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + ball.radius * 2 / 3)) && (ball.speed.y > 0))
 							{
 								brick[i][j].active = false;
-								ball::ball.speed.y *= -1;
+								ball.speed.y *= -1;
 							}
 							// Hit left
-							else if (((ball::ball.position.x + ball::ball.radius) >= (brick[i][j].position.x - brickSize.x / 2)) &&
-								((ball::ball.position.x + ball::ball.radius) < (brick[i][j].position.x - brickSize.x / 2 + ball::ball.speed.x)) &&
-								((fabs(ball::ball.position.y - brick[i][j].position.y)) < (brickSize.y / 2 + ball::ball.radius * 2 / 3)) && (ball::ball.speed.x > 0))
+							else if (((ball.position.x + ball.radius) >= (brick[i][j].position.x - brickSize.x / 2)) &&
+								((ball.position.x + ball.radius) < (brick[i][j].position.x - brickSize.x / 2 + ball.speed.x)) &&
+								((fabs(ball.position.y - brick[i][j].position.y)) < (brickSize.y / 2 + ball.radius * 2 / 3)) && (ball.speed.x > 0))
 							{
 								brick[i][j].active = false;
-								ball::ball.speed.x *= -1;
+								ball.speed.x *= -1;
 							}
 							// Hit right
-							else if (((ball::ball.position.x - ball::ball.radius) <= (brick[i][j].position.x + brickSize.x / 2)) &&
-								((ball::ball.position.x - ball::ball.radius) > (brick[i][j].position.x + brickSize.x / 2 + ball::ball.speed.x)) &&
-								((fabs(ball::ball.position.y - brick[i][j].position.y)) < (brickSize.y / 2 + ball::ball.radius * 2 / 3)) && (ball::ball.speed.x < 0))
+							else if (((ball.position.x - ball.radius) <= (brick[i][j].position.x + brickSize.x / 2)) &&
+								((ball.position.x - ball.radius) > (brick[i][j].position.x + brickSize.x / 2 + ball.speed.x)) &&
+								((fabs(ball.position.y - brick[i][j].position.y)) < (brickSize.y / 2 + ball.radius * 2 / 3)) && (ball.speed.x < 0))
 							{
 								brick[i][j].active = false;
-								ball::ball.speed.x *= -1;
+								ball.speed.x *= -1;
 							}
 						}
 					}
@@ -119,11 +118,6 @@ namespace app
 					}
 				}
 			}
-		}
-
-		void UnloadBrick()
-		{
-
 		}
 	}
 }
