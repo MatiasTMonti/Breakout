@@ -14,8 +14,8 @@ namespace app
 		void InitPlayer()
 		{
 			// Initialize player
-			player.position = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() * 7 / 8 };
-			player.size = { (float)GetScreenWidth() / 10, 20 };
+			player.position = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) * 7 / 8 };
+			player.size = { static_cast<float>(GetScreenWidth()) / 10, 20 };
 			player.life = 3;
 		}
 

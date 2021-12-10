@@ -1,6 +1,6 @@
 #include "gameover.h"
 
-#include <raylib.h>
+#include "raylib.h"
 
 #include "game.h"
 #include "app.h"

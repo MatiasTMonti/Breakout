@@ -1,8 +1,8 @@
-#include "Ball.h"
+#include "ball.h"
 
-#include "Player.h"
+#include "player.h"
 #include "game.h"
-#include "App.h"
+#include "app.h"
 
 using namespace app;
 using namespace game;
@@ -22,7 +22,7 @@ namespace app
 			ballSound = LoadSound("../res/impactsfx.ogg");
 
 			// Initialize ball
-			ball.position = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() * 7 / 8 - 30 };
+			ball.position = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) * 7 / 8 - 30 };
 			ball.speed = { 0, 0 };
 			ball.radius = 7;
 			ball.active = false;
@@ -38,19 +38,19 @@ namespace app
 					if (IsKeyPressed(KEY_SPACE))
 					{
 						ball.active = true;
-						ball.speed = { 0, -250 };
+						ball.speed = { 0, -5 };
 					}
 				}
 
 				// Ball movement logic
 				if (ball.active)
 				{
-					ball.position.x += ball.speed.x * GetFrameTime();
-					ball.position.y += ball.speed.y * GetFrameTime();
+					ball.position.x += ball.speed.x;
+					ball.position.y += ball.speed.y;
 				}
 				else
 				{
-					ball.position = { app::player::player.position.x, (float)GetScreenHeight() * 7 / 8 - 30 };
+					ball.position = { app::player::player.position.x, static_cast<float>(GetScreenHeight()) * 7 / 8 - 30 };
 				}
 
 				// Collision logic: ball vs walls
@@ -70,7 +70,7 @@ namespace app
 					if (ball.speed.y > 0)
 					{
 						ball.speed.y *= -1;
-						ball.speed.x = (ball.position.x - player::player.position.x) / (player::player.size.x / 2) * 250;
+						ball.speed.x = (ball.position.x - player::player.position.x) / (player::player.size.x / 2) * 5;
 					}
 
 					if (!pauseSoundBall)

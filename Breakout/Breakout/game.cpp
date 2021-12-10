@@ -3,9 +3,9 @@
 #include "raylib.h"
 
 #include "app.h"
-#include "Player.h"
-#include "Brick.h"
-#include "Ball.h"
+#include "player.h"
+#include "brick.h"
+#include "ball.h"
 
 using namespace app;
 using namespace player;

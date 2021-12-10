@@ -1,113 +1,83 @@
-#include "App.h"
+#include "app.h"
 
 int main()
 {
 	app::ExecuteGame();
 }
 
-///*******************************************************************************************
-//*
-//*   raylib - sample game: arkanoid
-//*
-//*   Sample game Marc Palau and Ramon Santamaria
-//*
-//*   This game has been created using raylib v1.3 (www.raylib.com)
-//*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-//*
-//*   Copyright (c) 2015 Ramon Santamaria (@raysan5)
-//*
-//********************************************************************************************/
+
 //#include "raylib.h"
 //#include <stdio.h>
 //#include <stdlib.h>
 //#include <time.h>
 //#include <math.h>
-//#if defined(PLATFORM_WEB)
-//#include <emscripten/emscripten.h>
-//#endif
-////----------------------------------------------------------------------------------
-//// Some Defines
-////----------------------------------------------------------------------------------
-//#define PLAYER_MAX_LIFE         5
-//#define LINES_OF_BRICKS         5
-//#define BRICKS_PER_LINE        20
-////----------------------------------------------------------------------------------
-//// Types and Structures Definition
-////----------------------------------------------------------------------------------
-//typedef enum GameScreen { LOGO, TITLE, GAMEPLAY, ENDING } GameScreen;
-//typedef struct Player {
+//
+//const int PLAYER_MAX_LIFE = 5;
+//const int LINES_OF_BRICKS = 5;
+//const int BRICKS_PER_LINE = 20;
+//
+//enum GameScreen { LOGO, TITLE, GAMEPLAY, ENDING } GameScreen;
+//
+//struct Player {
 //	Vector2 position;
 //	Vector2 size;
 //	int life;
-//} Player;
-//typedef struct Ball {
+//};
+//
+//struct Ball {
 //	Vector2 position;
 //	Vector2 speed;
 //	int radius;
 //	bool active;
-//} Ball;
-//typedef struct Brick {
+//};
+//
+//struct Brick {
 //	Vector2 position;
 //	bool active;
-//} Brick;
-////------------------------------------------------------------------------------------
-//// Global Variables Declaration
-////------------------------------------------------------------------------------------
+//};
+//
+////Pantalla
 //static const int screenWidth = 800;
 //static const int screenHeight = 450;
+//
+////Bools
 //static bool gameOver = false;
 //static bool pause = false;
+//
+////Entidades
 //static Player player = { 0 };
 //static Ball ball = { 0 };
 //static Brick brick[LINES_OF_BRICKS][BRICKS_PER_LINE] = { 0 };
 //static Vector2 brickSize = { 0 };
-////------------------------------------------------------------------------------------
-//// Module Functions Declaration (local)
-////------------------------------------------------------------------------------------
-//static void InitGame(void);         // Initialize game
-//static void UpdateGame(void);       // Update game (one frame)
-//static void DrawGame(void);         // Draw game (one frame)
-//static void UnloadGame(void);       // Unload game
-//static void UpdateDrawFrame(void);  // Update and Draw (one frame)
-////------------------------------------------------------------------------------------
-//// Program main entry point
-////------------------------------------------------------------------------------------
-//int main(void)
+//
+////Creacion
+//static void InitGame();
+//static void UpdateGame();
+//static void DrawGame();
+//static void UpdateDrawFrame();
+//
+////Main
+//int main()
 //{
-//	// Initialization (Note windowTitle is unused on Android)
-//	//---------------------------------------------------------
 //	InitWindow(screenWidth, screenHeight, "sample game: arkanoid");
 //	InitGame();
-//#if defined(PLATFORM_WEB)
-//	emscripten_set_main_loop(UpdateDrawFrame, 0, 1);
-//#else
+//
 //	SetTargetFPS(60);
-//	//--------------------------------------------------------------------------------------
-//
 //	// Main game loop
-//	while (!WindowShouldClose())    // Detect window close button or ESC key
+//	while (!WindowShouldClose())
 //	{
-//		// Update and Draw
-//		//----------------------------------------------------------------------------------
 //		UpdateDrawFrame();
-//		//----------------------------------------------------------------------------------
 //	}
-//#endif
-//	// De-Initialization
-//	//--------------------------------------------------------------------------------------
-//	UnloadGame();         // Unload loaded data (textures, sounds, models...)
 //
-//	CloseWindow();        // Close window and OpenGL context
-//	//--------------------------------------------------------------------------------------
+//	CloseWindow();
 //	return 0;
 //}
-////------------------------------------------------------------------------------------
-//// Module Functions Definitions (local)
-////------------------------------------------------------------------------------------
-//// Initialize game variables
+//
+////Init variables
 //void InitGame(void)
 //{
 //	brickSize = { (float)GetScreenWidth() / BRICKS_PER_LINE, 40 };
+//
 //	// Initialize player
 //	player.position = { screenWidth / 2, screenHeight * 7 / 8 };
 //	player.size = { screenWidth / 10, 20 };
@@ -130,8 +100,9 @@ int main()
 //		}
 //	}
 //}
-//// Update game (one frame)
-//void UpdateGame(void)
+//
+//// Update game
+//void UpdateGame()
 //{
 //	if (!gameOver)
 //	{
@@ -253,8 +224,8 @@ int main()
 //		}
 //	}
 //}
-//// Draw game (one frame)
-//void DrawGame(void)
+//// Draw game
+//void DrawGame()
 //{
 //	BeginDrawing();
 //	ClearBackground(RAYWHITE);
@@ -286,13 +257,9 @@ int main()
 //	else DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth() / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, GetScreenHeight() / 2 - 50, 20, GRAY);
 //	EndDrawing();
 //}
-//// Unload game variables
-//void UnloadGame(void)
-//{
-//	// TODO: Unload all dynamic loaded data (textures, sounds, models...)
-//}
-//// Update and Draw (one frame)
-//void UpdateDrawFrame(void)
+//
+//// Update and Draw ()
+//void UpdateDrawFrame()
 //{
 //	UpdateGame();
 //	DrawGame();

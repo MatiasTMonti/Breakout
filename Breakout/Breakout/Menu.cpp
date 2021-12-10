@@ -54,8 +54,6 @@ namespace app
 
 		void InitMenu()
 		{
-			//menuImage = LoadImage("../res/backgroundMenu.png");
-			//menuImageTexture = LoadTextureFromImage(menuImage);
 			halfScreenWidth = GetScreenWidth() / 2;
 			halfScreenHeight = GetScreenHeight() / 2;
 

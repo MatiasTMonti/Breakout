@@ -1,11 +1,11 @@
 #include "Brick.h"
 
+#include <cmath>
+
 #include "Ball.h"
 #include "game.h"
 #include "App.h"
-#include "Player.h"
-
-#include <math.h>
+#include "player.h"
 
 using namespace app;
 using namespace game;
@@ -23,7 +23,7 @@ namespace app
 
 		void InitBrick()
 		{
-			brickSize = { (float)GetScreenWidth() / brickPerLines, 40 };
+			brickSize = { static_cast<float>(GetScreenWidth()) / brickPerLines, 40 };
 
 			// Initialize bricks
 			int initialDownPosition = 50;
