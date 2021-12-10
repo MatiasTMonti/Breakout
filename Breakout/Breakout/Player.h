@@ -8,7 +8,7 @@ namespace app
 		struct Player 
 		{
 			Vector2 position;
-			Vector2 size;
+			Rectangle size;
 			int life;
 		};
 

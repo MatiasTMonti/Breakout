@@ -6,11 +6,13 @@
 #include "player.h"
 #include "brick.h"
 #include "ball.h"
+#include "powerUp.h"
 
 using namespace app;
 using namespace players;
 using namespace brick;
 using namespace balls;
+using namespace powerup;
 
 namespace app
 {
@@ -56,6 +58,7 @@ namespace app
 			InitPlayer();
 			InitBrick();
 			InitBall();
+			//InitPowerUp();
 		}
 
 

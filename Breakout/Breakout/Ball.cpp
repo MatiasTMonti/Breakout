@@ -66,12 +66,12 @@ namespace app
 				}
 
 				// Collision logic: ball vs player
-				if (CheckCollisionCircleRec(ball.position, ball.radius, { player.position.x - player.size.x / 2, player.position.y - player.size.y / 2, player.size.x, player.size.y }))
+				if (CheckCollisionCircleRec(ball.position, ball.radius, { player.position.x - player.size.width / 2, player.position.y - player.size.height / 2, player.size.width, player.size.height }))
 				{
 					if (ball.speed.y > 0)
 					{
 						ball.speed.y *= -1;
-						ball.speed.x = (ball.position.x - player.position.x) / (player.size.x / 2) * 5;
+						ball.speed.x = (ball.position.x - player.position.x) / (player.size.width / 2) * 5;
 					}
 
 					if (!pauseSoundBall)

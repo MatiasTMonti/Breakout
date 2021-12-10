@@ -1,20 +1,24 @@
 #include "Brick.h"
 
 #include <cmath>
+#include <cstdlib>
 
-#include "Ball.h"
+#include "ball.h"
 #include "game.h"
-#include "App.h"
-#include "player.h"
+#include "app.h"
+#include "powerUp.h"
 
 using namespace app;
 using namespace game;
 using namespace balls;
+using namespace powerup;
 
 namespace app
 {
 	namespace brick
 	{
+		int random;
+
 		const int linesBricks = 5;
 		const int brickPerLines = 20;
 
@@ -36,12 +40,15 @@ namespace app
 					brick[i][j].active = true;
 				}
 			}
+
+			InitPowerUp();
 		}
 
 		void UpdateBrick()
 		{
 			if (!gameOver)
 			{
+				random = rand() % 100 + 1;
 				// Collision logic: ball vs bricks
 				for (int i = 0; i < linesBricks; i++)
 				{
@@ -49,11 +56,24 @@ namespace app
 					{
 						if (brick[i][j].active)
 						{
+
 							// Hit below
 							if (((ball.position.y - ball.radius) <= (brick[i][j].position.y + brickSize.y / 2)) &&
 								((ball.position.y - ball.radius) > (brick[i][j].position.y + brickSize.y / 2 + ball.speed.y)) &&
 								((fabs(ball.position.x - brick[i][j].position.x)) < (brickSize.x / 2 + ball.radius * 2 / 3)) && (ball.speed.y < 0))
 							{
+								if (!activePowerupPlayer)
+								{
+									if (!upgrade.active)
+									{
+										if (random >= 10)
+										{
+											upgrade.pos = brick[i][j].position;
+											upgrade.active = true;
+										}
+									}
+								}
+
 								brick[i][j].active = false;
 								ball.speed.y *= -1;
 							}
@@ -64,6 +84,16 @@ namespace app
 							{
 								brick[i][j].active = false;
 								ball.speed.y *= -1;
+
+								if (!upgrade.active)
+								{
+									if (random >= 80)
+									{
+										upgrade.pos = brick[i][j].position;
+										upgrade.active = true;
+									}
+								}
+
 							}
 							// Hit left
 							else if (((ball.position.x + ball.radius) >= (brick[i][j].position.x - brickSize.x / 2)) &&
@@ -72,6 +102,16 @@ namespace app
 							{
 								brick[i][j].active = false;
 								ball.speed.x *= -1;
+
+								if (!upgrade.active)
+								{
+									if (random >= 80)
+									{
+										upgrade.pos = brick[i][j].position;
+										upgrade.active = true;
+									}
+								}
+
 							}
 							// Hit right
 							else if (((ball.position.x - ball.radius) <= (brick[i][j].position.x + brickSize.x / 2)) &&
@@ -80,9 +120,25 @@ namespace app
 							{
 								brick[i][j].active = false;
 								ball.speed.x *= -1;
+
+								if (!upgrade.active)
+								{
+									if (random >= 80)
+									{
+										upgrade.pos = brick[i][j].position;
+										upgrade.active = true;
+									}
+								}
+
 							}
 						}
 					}
+				}
+
+				if (upgrade.active)
+				{
+					UpdatePowerUp();
+					DrawPowerUp();
 				}
 
 				victory = true;

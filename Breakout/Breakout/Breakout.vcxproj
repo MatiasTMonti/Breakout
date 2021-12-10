@@ -180,6 +180,7 @@ XCOPY "$(SolutionDir)res\" "$(ProjectDir)res\" /e /h /y /s</Command>
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
@@ -191,6 +192,10 @@ XCOPY "$(SolutionDir)res\" "$(ProjectDir)res\" /e /h /y /s</Command>
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerUp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,6 @@
-#include "Player.h"
-#include "App.h"
+#include "player.h"
+
+#include "app.h"
 #include "game.h"
 
 using namespace app;
@@ -15,7 +16,8 @@ namespace app
 		{
 			// Initialize player
 			player.position = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) * 7 / 8 };
-			player.size = { static_cast<float>(GetScreenWidth()) / 10, 20 };
+			player.size.width = static_cast<float>(GetScreenWidth()) / 10;
+			player.size.height = 20;
 			player.life = 3;
 		}
 
@@ -25,16 +27,16 @@ namespace app
 			{
 				// Player movement logic
 				if (IsKeyDown(KEY_LEFT)) player.position.x -= 350 * GetFrameTime();
-				if ((player.position.x - player.size.x / 2) <= 0) player.position.x = player.size.x / 2;
+				if ((player.position.x - player.size.width / 2) <= 0) player.position.x = player.size.width / 2;
 				if (IsKeyDown(KEY_RIGHT)) player.position.x += 350 * GetFrameTime();
-				if ((player.position.x + player.size.x / 2) >= GetScreenWidth()) player.position.x = GetScreenWidth() - player.size.x / 2;
+				if ((player.position.x + player.size.width / 2) >= GetScreenWidth()) player.position.x = GetScreenWidth() - player.size.width / 2;
 			}
 		}
 
 		void DrawPlayer()
 		{
 			// Draw player bar
-			DrawRectangle(player.position.x - player.size.x / 2, player.position.y - player.size.y / 2, player.size.x, player.size.y, WHITE);
+			DrawRectangle(player.position.x - player.size.width / 2, player.position.y - player.size.height / 2, player.size.width, player.size.height, WHITE);
 
 			// Draw player lives
 			for (int i = 0; i < player.life; i++)
