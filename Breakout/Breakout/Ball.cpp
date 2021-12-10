@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "game.h"
+#include "App.h"
 
 using namespace app;
 using namespace game;
@@ -68,7 +69,11 @@ namespace app
 				}
 
 				// Game over logic
-				if (player::player.life <= 0) gameOver = true;
+				if (player::player.life <= 0)
+				{
+					gameOver = true;
+					currentScreen = GameOver;
+				}
 			}
 		}
 

@@ -3,6 +3,7 @@
 #include "Ball.h"
 #include "game.h"
 #include "App.h"
+#include "Player.h"
 
 #include <math.h>
 
@@ -19,6 +20,7 @@ namespace app
 
 		static Brick brick[linesBricks][brickPerLines] = { 0 };
 		static Vector2 brickSize = { 0 };
+		static Rectangle brickSizes;
 
 		void InitBrick()
 		{
@@ -83,10 +85,8 @@ namespace app
 						}
 					}
 				}
-			}
-			else
-			{
-				gameOver = true;
+
+				victory = true;
 
 				for (int i = 0; i < linesBricks; i++)
 				{
@@ -94,10 +94,14 @@ namespace app
 					{
 						if (brick[i][j].active)
 						{
-							victory = true;
-							currentScreen = GameOver;
+							victory = false;
 						}
 					}
+				}
+
+				if (victory)
+				{
+					currentScreen = GameOver;
 				}
 			}
 		}
